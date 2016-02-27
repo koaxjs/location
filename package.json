@@ -1,0 +1,31 @@
+{
+  "name": "@koax/location",
+  "description": "Location effects.",
+  "repository": "git://github.com/koaxjs/location.git",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "scripts": {
+    "prepublish": "make build",
+    "postpublish": "make clean",
+    "postversion": "git push && git push --tags && npm publish --access=public"
+  },
+  "dependencies": {
+    "@koax/boot": "^1.0.0",
+    "@koax/driver": "^0.2.0",
+    "bind-url": "^0.1.6"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.4.0",
+    "babel-polyfill": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "^6.3.13",
+    "babel-runtime": "^6.5.0",
+    "babelify": "^7.2.0",
+    "hihat": "^2.6.4",
+    "koax": "^0.5.2",
+    "mock-location": "^0.2.0",
+    "tape": "^4.2.2"
+  }
+}
