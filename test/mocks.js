@@ -1,7 +1,7 @@
 import mockLocation from 'mock-location'
 
 class MockWindow {
-  constructor() {
+  constructor () {
     this.location = mockLocation('/')
     this.history = new MockHistory(this.location)
     this.events = {}
@@ -18,7 +18,7 @@ class MockWindow {
 }
 
 class MockHistory {
-  constructor(location) {
+  constructor (location) {
     this._states = []
     this._location = location
   }

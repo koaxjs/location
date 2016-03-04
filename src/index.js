@@ -10,10 +10,13 @@ const SET_URL = '@koax/location/SET_URL'
 const GET_URL = '@koax/location/GET_URL'
 
 /**
- * location
+ * Location effect
+ * @param  {Function} listener   action creator
+ * @param  {Object} wnd=window
+ * @return {Generator}
  */
 
-function locationEffect (listener, wnd=window) {
+function locationEffect (listener, wnd = window) {
   let {push, drive} = driver(next => bindUrl({wnd}, next))
 
   return function * (action, next) {
@@ -23,27 +26,38 @@ function locationEffect (listener, wnd=window) {
         action.payload.replace
           ? wnd.history.replaceState(null, null, url)
           : wnd.history.pushState(null, null, url)
-        console.log('push url', url)
         yield push(url)
+        break
       case GET_URL:
         return wnd.location.pathname + wnd.location.search
       case BOOT:
         drive(listener)
+        return next()
       default:
         return next()
     }
   }
 }
 
+/**
+ * Set url action creator
+ * @param {String} url
+ * @param {Boolean} replace
+ * @return {Object}
+ */
 
 function setUrl (url, replace) {
   return {type: SET_URL, payload: {url, replace}}
 }
 
+/**
+ * Get url action creator
+ * @return {Object}
+ */
+
 function getUrl () {
   return {type: GET_URL}
 }
-
 
 /**
  * Exports
