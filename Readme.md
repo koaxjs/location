@@ -16,7 +16,7 @@ Location effects.
 
 ```js
 import {locationEffect, setUrl} from '@koax/location'
-import koax, {interpreter} from 'koax'
+import koax, {run} from 'koax'
 
 let state = {}
 
@@ -29,7 +29,7 @@ io.use(function (action, next) {
   return next()
 })
 
-let interpret = interpreter(io)
+let interpret = run(io)
 
 interpret(function * () {
   yield setUrl('/foo')

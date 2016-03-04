@@ -6,7 +6,7 @@
 import 'babel-polyfill'
 import test from 'tape'
 import {locationEffect, getUrl, setUrl} from '../src'
-import koax, {interpreter} from 'koax'
+import koax, {run} from 'koax'
 import MockWindow from './mocks'
 
 /**
@@ -24,7 +24,7 @@ app.use(function (action) {
 })
 
 test('should get url', (t) => {
-  let interpret = interpreter(app)
+  let interpret = run(app)
 
   interpret(function * () {
     let url = yield getUrl()
